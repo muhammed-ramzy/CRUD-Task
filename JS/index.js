@@ -33,14 +33,18 @@ function validateInput(element) {
 
         //if valid, display the alert
         element.nextElementSibling.classList.replace("d-block", "d-none");
-
+        addBtn.classList.remove("disabled");
         return true;
     }
     else {
         //if invalid, show the red border around the input
         element.classList.add("is-invalid");
         element.classList.remove("is-valid");
+        
+        if (!addBtn.classList.contains("disabled")) {
 
+            addBtn.classList.add("disabled");
+        }
         //if invalid, display the alert
         element.nextElementSibling.classList.replace("d-none", "d-block");
 
