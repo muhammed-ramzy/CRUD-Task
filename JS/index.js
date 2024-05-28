@@ -12,6 +12,7 @@ var productsCards = document.getElementById("productsCards");
 
 //Array to hold form data
 var productsContainer = [];
+var searchedProducts = [];
 
 var searchedIndex;
 
@@ -33,6 +34,8 @@ function validateInput(element) {
 
         //if valid, display the alert
         element.nextElementSibling.classList.replace("d-block", "d-none");
+
+        //Enabling the "add product" button
         addBtn.classList.remove("disabled");
         return true;
     }
@@ -40,11 +43,12 @@ function validateInput(element) {
         //if invalid, show the red border around the input
         element.classList.add("is-invalid");
         element.classList.remove("is-valid");
-        
-        if (!addBtn.classList.contains("disabled")) {
 
+        //disabling the "add product" button
+        if (!addBtn.classList.contains("disabled")) {
             addBtn.classList.add("disabled");
         }
+
         //if invalid, display the alert
         element.nextElementSibling.classList.replace("d-none", "d-block");
 
@@ -115,26 +119,45 @@ function displayProducts(displayedArray) {
     }
 
     productsCards.innerHTML = container;
-}
 
+    //Clean the searchedProducts array and the productsContainer array form any span added
+    for (var i = 0; i < displayedArray.length; i++) {
+        displayedArray[i].name = displayedArray[i].name.replace(`<span class="text-danger">`, "");
+        displayedArray[i].name = displayedArray[i].name.replace(`</span>`, "");
+    }
+
+    // console.log(displayedArray);
+}
 function deleteProduct(index) {
+    //Searching for the matched index in the productsContainer
+    for (var i = 0; i < productsContainer.length; i++) {
+        if (searchedProducts[index].name == productsContainer[i].name &&
+            searchedProducts[index].price == productsContainer[i].price &&
+            searchedProducts[index].category == productsContainer[i].category &&
+            searchedProducts[index].description == productsContainer[i].description) {
+            index = i;
+            break;
+        }
+    }
+    
     productsContainer.splice(index, 1);
     localStorage.setItem("products", JSON.stringify(productsContainer));
     displayProducts(productsContainer);
 }
 
+
 function search(term) {
-    var searchedProducts = [];
+    searchedProducts = [];
     //declaring two variables, one to store string in it and the other to store a copy of an array of objects
     var tempString;
     var tempArr = [];
     for (var i = 0; i < productsContainer.length; i++) {
         if (productsContainer[i].name.toLowerCase().includes(term.toLowerCase())) {
             //Here we make a copy of the productsContainer array because passing it directly passes it by reference not value which changes the real data
-            tempString = JSON.stringify(productsContainer);
-            tempArr = JSON.parse(tempString);
+            // tempString = JSON.stringify(productsContainer);
+            // tempArr = JSON.parse(tempString);
 
-            searchedProducts.push(tempArr[i]);
+            searchedProducts.push(productsContainer[i]);
         }
     }
 
@@ -165,7 +188,18 @@ function setFormForUpdate(index) {
 
     //Fill the form with the edited items
 
+    //Searching for the matched index in the productsContainer
+    for (var i = 0; i < productsContainer.length; i++) {
+        if (searchedProducts[index].name == productsContainer[i].name &&
+            searchedProducts[index].price == productsContainer[i].price &&
+            searchedProducts[index].category == productsContainer[i].category &&
+            searchedProducts[index].description == productsContainer[i].description) {
+            index = i;
+            break;
+        }
+    }
 
+    console.log(index);
     productName.value = productsContainer[index].name;
     productPrice.value = productsContainer[index].price;
     productCategory.value = productsContainer[index].category;
