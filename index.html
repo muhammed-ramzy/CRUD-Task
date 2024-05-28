@@ -36,14 +36,21 @@
                     <label for="productPrice">Product Price</label>
                     <input type="number" oninput="validateInput(this)" class="form-control mb-3" id="productPrice">
                     <div class="alert d-none alert-danger py-1">
-                        <p class="my-0">The price mustn't exceed millions</p>
+                        <p class="my-0">The price must be between $6000 and $60000</p>
                     </div>
 
                     <label for="productCategory">Product Category</label>
-                    <input type="text" oninput="validateInput(this)" class="form-control mb-3" id="productCategory">
+                    <input list="productCategoryList" type="text" oninput="validateInput(this)" class="form-control mb-3" id="productCategory">
                     <div class="alert d-none alert-danger py-1">
-                        <p class="my-0">The product category must be one of the following (Phone, TV, Watch, Clothes)</p>
+                        <p class="my-0">The product category must be one of the following (TV, Mobile, Screens, Watch, Electronics)</p>
                     </div>
+                    <datalist id="productCategoryList">
+                        <option value="TV"/>
+                        <option value="Mobile"/>
+                        <option value="Screens"/>
+                        <option value="Watch"/>
+                        <option value="Electronics"/>
+                    </datalist>
 
                     <label for="productImage">Product Image</label>
                     <input type="file" class="form-control mb-3" id="productImage">

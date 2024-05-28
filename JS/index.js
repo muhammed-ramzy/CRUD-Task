@@ -20,8 +20,8 @@ var searchedIndex;
 function validateInput(element) {
     var regex = {
         productName: /^[A-Z][\w]+$/,
-        productPrice: /^[\d]{1,7}$/,
-        productCategory: /^Phone|TV|Watch|Clothes$/,
+        productPrice: /^([6-9][0-9]{3}|[1-5][0-9]{4}|60000)$/,
+        productCategory: /^(TV|Mobile|Screens|Watch|Electronics)$/,
         productDesc: /^.{0,255}$/,
     }
 
@@ -61,6 +61,8 @@ if (localStorage.getItem("products") != null) {
 function addNewProduct() {
 
     if (validateInput(productName) && validateInput(productPrice) && validateInput(productCategory) && validateInput(productDesc)) {
+
+
         var product = {
             name: productName.value,
             price: productPrice.value,
