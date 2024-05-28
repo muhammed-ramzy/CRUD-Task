@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Project</title>
+
+    <!-- FontAwesome icons css file -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- Bootstrap css file -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- My Animaition css file -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- My Media Query css file -->
+    <link rel="stylesheet" href="css/media.css">
+    <!-- My Main CSS file -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <h1 class="text-center py-3 display-5 fw-bold text-info">Warehouse</h1>
+    <!-- Start Products form -->
+    <div class="container my-3">
+        <div class="row">
+
+            <div class="item col-12">
+                <div class="products-form border border-success p-3 mb-5 border-3 rounded">
+                    <h2 class="text-center py-3 display-6    fw-bold text-dark-emphasis">Products Form</h2>
+                    <label for="productName">Product Name</label>
+                    <input type="text" oninput="validateInput(this)" class="form-control mb-3" id="productName">
+                    <div class="alert d-none alert-danger py-1">
+                        <p class="my-0">The name must start with a capital letter and more than one character</p>
+                    </div>
+
+                    <label for="productPrice">Product Price</label>
+                    <input type="number" oninput="validateInput(this)" class="form-control mb-3" id="productPrice">
+                    <div class="alert d-none alert-danger py-1">
+                        <p class="my-0">The price mustn't exceed millions</p>
+                    </div>
+
+                    <label for="productCategory">Product Category</label>
+                    <input type="text" oninput="validateInput(this)" class="form-control mb-3" id="productCategory">
+                    <div class="alert d-none alert-danger py-1">
+                        <p class="my-0">The product category must be one of the following (Phone, TV, Watch, Clothes)</p>
+                    </div>
+
+                    <label for="productImage">Product Image</label>
+                    <input type="file" class="form-control mb-3" id="productImage">
+
+                    <label for="productDesc">Product Description</label>
+                    <textarea oninput="validateInput(this)" class="form-control mb-3" id="productDesc"></textarea>
+                    <div class="alert d-none alert-danger py-1">
+                        <p class="my-0">The description mustn't exceed 255 characters</p>
+                    </div>
+
+                    <button onclick="addNewProduct()" class="btn btn-info d-block w-100" id="addBtn">Add
+                        Product</button>
+                    <button onclick="updateProduct()" class="btn btn-warning d-none w-100" id="updateBtn">Update
+                        Product</button>
+                </div>
+            </div>
+
+            <input type="text" oninput="search(this.value)" placeholder="Search here..." class="form-control mb-2"
+                id="productSearch">
+
+            <section class="row gy-3 products-cards" id="productsCards">
+
+            </section>
+        </div>
+    </div>
+    <!-- End Products form -->
+
+
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/index.js"></script>
+</body>
+
+</html>
