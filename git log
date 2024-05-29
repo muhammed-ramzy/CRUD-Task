@@ -1,0 +1,23 @@
+[33mcommit 08d161d9c88f6f917c95b00b31c22a0af231c074[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: muhammed-ramzy <muhammedabdelfattah89@gmail.com>
+Date:   Tue May 28 19:55:24 2024 +0300
+
+    Update and Delete buttons work when searching
+
+[33mcommit 77c88a5da0c5d868fab86a2d032d2ba55442068c[m
+Author: muhammed-ramzy <muhammedabdelfattah89@gmail.com>
+Date:   Tue May 28 19:09:07 2024 +0300
+
+    Disabled 'add product' button
+
+[33mcommit aa9f0d6beb72926122bd93697bd7786e44c146f5[m
+Author: muhammed-ramzy <muhammedabdelfattah89@gmail.com>
+Date:   Tue May 28 17:40:24 2024 +0300
+
+    Added datalist and updated regex
+
+[33mcommit 980c57e5532c8ec15ca4ff8e651f4d539ea77385[m
+Author: muhammed-ramzy <muhammedabdelfattah89@gmail.com>
+Date:   Tue May 28 06:56:11 2024 +0300
+
+    initial commit

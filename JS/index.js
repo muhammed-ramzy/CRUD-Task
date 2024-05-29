@@ -56,7 +56,13 @@ function validateInput(element) {
     }
 }
 
-
+function removeIsValid()
+{
+    productName.classList.remove("is-valid");
+    productPrice.classList.remove("is-valid");
+    productCategory.classList.remove("is-valid");
+    productDesc.classList.remove("is-valid");
+}
 
 
 //Checking if there is products stored in the local storage or not
@@ -86,6 +92,9 @@ function addNewProduct() {
         deleteFormData();
         displayProducts(productsContainer);
     }
+
+    //removing green border from the from input fields
+    removeIsValid();
 }
 
 function deleteFormData() {
@@ -130,16 +139,18 @@ function displayProducts(displayedArray) {
 }
 function deleteProduct(index) {
     //Searching for the matched index in the productsContainer
-    for (var i = 0; i < productsContainer.length; i++) {
-        if (searchedProducts[index].name == productsContainer[i].name &&
-            searchedProducts[index].price == productsContainer[i].price &&
-            searchedProducts[index].category == productsContainer[i].category &&
-            searchedProducts[index].description == productsContainer[i].description) {
-            index = i;
-            break;
+    if (!(searchedProducts.length == 0)) {
+        for (var i = 0; i < productsContainer.length; i++) {
+            if (searchedProducts[index].name == productsContainer[i].name &&
+                searchedProducts[index].price == productsContainer[i].price &&
+                searchedProducts[index].category == productsContainer[i].category &&
+                searchedProducts[index].description == productsContainer[i].description) {
+                index = i;
+                break;
+            }
         }
     }
-    
+
     productsContainer.splice(index, 1);
     localStorage.setItem("products", JSON.stringify(productsContainer));
     displayProducts(productsContainer);
@@ -189,16 +200,17 @@ function setFormForUpdate(index) {
     //Fill the form with the edited items
 
     //Searching for the matched index in the productsContainer
-    for (var i = 0; i < productsContainer.length; i++) {
-        if (searchedProducts[index].name == productsContainer[i].name &&
-            searchedProducts[index].price == productsContainer[i].price &&
-            searchedProducts[index].category == productsContainer[i].category &&
-            searchedProducts[index].description == productsContainer[i].description) {
-            index = i;
-            break;
+    if (!(searchedProducts.length == 0)) {
+        for (var i = 0; i < productsContainer.length; i++) {
+            if (searchedProducts[index].name == productsContainer[i].name &&
+                searchedProducts[index].price == productsContainer[i].price &&
+                searchedProducts[index].category == productsContainer[i].category &&
+                searchedProducts[index].description == productsContainer[i].description) {
+                index = i;
+                break;
+            }
         }
     }
-
     console.log(index);
     productName.value = productsContainer[index].name;
     productPrice.value = productsContainer[index].price;
@@ -224,4 +236,5 @@ function updateProduct() {
     addBtn.classList.replace("d-none", "d-block");
 
     deleteFormData();
+    removeIsValid();
 }
