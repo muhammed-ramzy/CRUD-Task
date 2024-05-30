@@ -20,14 +20,44 @@ var searchedProducts = [];
 // Regex function
 function validateInput(element) {
     var regex = {
-        productName: /^[A-Z][\w]+$/,
+        productName: /^[A-Z][\w\s]+$/,
         productPrice: /^([6-9][0-9]{3}|[1-5][0-9]{4}|60000)$/,
         productCategory: /^(TV|Mobile|Screens|Watch|Electronics)$/,
         productDesc: /^.{0,255}$/,
+        productImage: /^[^0]$/
     }
 
-    //validate the input
-    if (regex[element.id].test(element.value)) {
+    //validating the input
+    if (element.id == "productImage") {
+        if (regex[element.id].test(element.files.length)) {
+            //if valid, show the green border around the input
+            element.classList.add("is-valid");
+            element.classList.remove("is-invalid");
+
+            //if valid, display the alert
+            element.nextElementSibling.classList.replace("d-block", "d-none");
+
+            //Enabling the "add product" button
+            addBtn.classList.remove("disabled");
+            return true;
+        }
+        else {
+            //if invalid, show the red border around the input
+            element.classList.add("is-invalid");
+            element.classList.remove("is-valid");
+
+            //disabling the "add product" button
+            if (!addBtn.classList.contains("disabled")) {
+                addBtn.classList.add("disabled");
+            }
+
+            //if invalid, display the alert
+            element.nextElementSibling.classList.replace("d-none", "d-block");
+
+            return false;
+        }
+    }
+    else if (regex[element.id].test(element.value)) {
         //if valid, show the green border around the input
         element.classList.add("is-valid");
         element.classList.remove("is-invalid");
@@ -61,6 +91,7 @@ function removeIsValid() {
     productPrice.classList.remove("is-valid");
     productCategory.classList.remove("is-valid");
     productDesc.classList.remove("is-valid");
+    productImage.classList.remove("is-valid");
 }
 
 
@@ -73,9 +104,9 @@ if (localStorage.getItem("products") != null) {
 
 function addNewProduct() {
 
-    if (validateInput(productName) && validateInput(productPrice) && validateInput(productCategory) && validateInput(productDesc)) {
+    if (validateInput(productName) && validateInput(productPrice) && validateInput(productCategory) && validateInput(productDesc) && validateInput(productImage)) {
 
-
+        //Creating a product object to push in the array
         var product = {
             name: productName.value,
             price: productPrice.value,
@@ -155,7 +186,6 @@ function deleteProduct(index) {
     displayProducts(productsContainer);
 }
 
-
 function search(term) {
     searchedProducts = [];
     //declaring two variables, one to store string in it and the other to store a copy of an array of objects
@@ -225,24 +255,24 @@ function updateProduct() {
     var updatedCard = document.querySelector("button[data-updated-card]");
     var updatedCardIndex = Number(updatedCard.getAttribute("data-updated-card"));
 
+    if (validateInput(productImage)) {
+        //Updating the item in the array
+        productsContainer[updatedCardIndex].name = productName.value;
+        productsContainer[updatedCardIndex].price = productPrice.value;
+        productsContainer[updatedCardIndex].category = productCategory.value;
+        productsContainer[updatedCardIndex].description = productDesc.value;
+        productsContainer[updatedCardIndex].image = `images/${productImage.files[0].name}`;
 
-    //Updating the item in the array
-    productsContainer[updatedCardIndex].name = productName.value;
-    productsContainer[updatedCardIndex].price = productPrice.value;
-    productsContainer[updatedCardIndex].category = productCategory.value;
-    productsContainer[updatedCardIndex].description = productDesc.value;
-    productsContainer[updatedCardIndex].image = `images/${productImage.files[0].name}`;
+        displayProducts(productsContainer);
+        localStorage.setItem("products", JSON.stringify(productsContainer));
 
-    displayProducts(productsContainer);
-    localStorage.setItem("products", JSON.stringify(productsContainer));
+        updateBtn.classList.replace("d-block", "d-none");
+        addBtn.classList.replace("d-none", "d-block");
 
-    updateBtn.classList.replace("d-block", "d-none");
-    addBtn.classList.replace("d-none", "d-block");
-
-    deleteFormData();
-    removeIsValid();
+        deleteFormData();
+        removeIsValid();
+    }
 }
-
 
 function addCustomAttr(displayedArray, index) {
     var container = ``;
@@ -266,8 +296,7 @@ function addCustomAttr(displayedArray, index) {
         </div>
         </div>`;
         }
-        else
-        {
+        else {
             container += `
         <div class="item col-3">
         <div class="card">

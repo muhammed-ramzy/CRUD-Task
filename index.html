@@ -53,7 +53,11 @@
                     </datalist>
 
                     <label for="productImage">Product Image</label>
-                    <input type="file" class="form-control mb-3" id="productImage">
+                    <input type="file" class="form-control mb-3" oninput="validateInput(this)" id="productImage">
+                    <div class="alert d-none alert-danger py-1">
+                        <p class="my-0">You must add at least one image</p>
+                    </div>
+
 
                     <label for="productDesc">Product Description</label>
                     <textarea oninput="validateInput(this)" class="form-control mb-3" id="productDesc"></textarea>
