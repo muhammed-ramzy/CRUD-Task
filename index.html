@@ -19,48 +19,55 @@
 </head>
 
 <body>
-    <h1 class="text-center py-3 display-5 fw-bold text-info">Warehouse</h1>
     <!-- Start Products form -->
-    <div class="container my-3">
+    <div class="container-fluid  my-2">
+        <h1 class="text-center pt-3 display-5 fw-bold text-white B-main-font-family">Dashboard</h1>
         <div class="row">
-
-            <div class="item col-12">
-                <div class="products-form border border-success p-3 mb-5 border-3 rounded">
-                    <h2 class="text-center py-3 display-6    fw-bold text-dark-emphasis">Products Form</h2>
-                    <label for="productName">Product Name</label>
-                    <input type="text" oninput="validateInput(this)" class="form-control mb-3" id="productName">
+            <!-- Products form -->
+            <div class="item col-4 ">
+                <input type="text" oninput="search(this.value)" placeholder="Search here..." class="form-control mb-1"
+                    id="productSearch">
+                <div class="products-form p-1 mb-5 border-3 rounded">
+                    <h2 class="text-center py-1 display-6 fw-bold text-white">Products Form</h2>
+                    <!-- <label for="productName">Product Name</label> -->
+                    <input type="text" oninput="validateInput(this)" placeholder="Product Name"
+                        class="form-control mb-3" id="productName">
                     <div class="alert d-none alert-danger py-1">
                         <p class="my-0">The name must start with a capital letter and more than one character</p>
                     </div>
 
-                    <label for="productPrice">Product Price</label>
-                    <input type="number" oninput="validateInput(this)" class="form-control mb-3" id="productPrice">
+                    <!-- <label for="productPrice">Product Price</label> -->
+                    <input type="number" oninput="validateInput(this)" placeholder="Product price"
+                        class="form-control mb-3" id="productPrice">
                     <div class="alert d-none alert-danger py-1">
                         <p class="my-0">The price must be between $6000 and $60000</p>
                     </div>
 
-                    <label for="productCategory">Product Category</label>
-                    <input list="productCategoryList" type="text" oninput="validateInput(this)" class="form-control mb-3" id="productCategory">
+                    <!-- <label for="productCategory">Product Category</label> -->
+                    <input list="productCategoryList" type="text" placeholder="Product category"
+                        oninput="validateInput(this)" class="form-control mb-3" id="productCategory">
                     <div class="alert d-none alert-danger py-1">
-                        <p class="my-0">The product category must be one of the following (TV, Mobile, Screens, Watch, Electronics)</p>
+                        <p class="my-0">The product category must be one of the following (TV, Mobile, Screens, Watch,
+                            Electronics)</p>
                     </div>
                     <datalist id="productCategoryList">
-                        <option value="TV"/>
-                        <option value="Mobile"/>
-                        <option value="Screens"/>
-                        <option value="Watch"/>
-                        <option value="Electronics"/>
+                        <option value="TV" />
+                        <option value="Mobile" />
+                        <option value="Screens" />
+                        <option value="Watch" />
+                        <option value="Electronics" />
                     </datalist>
 
-                    <label for="productImage">Product Image</label>
+                    <!-- <label for="productImage">Product Image</label> -->
                     <input type="file" class="form-control mb-3" oninput="validateInput(this)" id="productImage">
                     <div class="alert d-none alert-danger py-1">
                         <p class="my-0">You must add at least one image</p>
                     </div>
 
 
-                    <label for="productDesc">Product Description</label>
-                    <textarea oninput="validateInput(this)" class="form-control mb-3" id="productDesc"></textarea>
+                    <!-- <label for="productDesc">Product Description</label> -->
+                    <textarea oninput="validateInput(this)" class="form-control mb-3"
+                        placeholder="Descripe the product here" id="productDesc"></textarea>
                     <div class="alert d-none alert-danger py-1">
                         <p class="my-0">The description mustn't exceed 255 characters</p>
                     </div>
@@ -72,13 +79,16 @@
                 </div>
             </div>
 
-            <input type="text" oninput="search(this.value)" placeholder="Search here..." class="form-control mb-2"
-                id="productSearch">
 
-            <section class="row gy-3 products-cards" id="productsCards">
+            <div class="item col-8 products-container overflow-auto rounded-4 py-2 ">
 
-            </section>
+
+                <section class="row gy-3 products-cards " id="productsCards">
+
+                </section>
+            </div>
         </div>
+
     </div>
     <!-- End Products form -->
 
@@ -88,3 +98,5 @@
 </body>
 
 </html>
+
+

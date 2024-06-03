@@ -140,18 +140,24 @@ function displayProducts(displayedArray) {
 
     for (var i = 0; i < displayedArray.length; i++) {
         container += `
-        <div class="item col-3">
-        <div class="card">
+        <div class="item col-4 ">
+        <div class="card rounded-5">
         <div class="card-img">
             <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
         </div>
         <div class="card-body">
-            <p>${displayedArray[i].name}</p>
-            <p>${displayedArray[i].price}EGP</p>
-            <p>${displayedArray[i].category}</p>
-            <p>${displayedArray[i].description}</p>
-            <button class="btn btn-warning" onclick="setFormForUpdate(${i})">Update</button>
-            <button class="btn btn-danger" onclick="deleteProduct(${i})">Delete</button>
+            <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
+            <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
+            <div class="row">
+            <div class="item col-6">
+            <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
+            </div>
+            <div class="item col-6">
+            <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" onclick="deleteProduct(${i})">Delete</button>
+            </div>
+            </div>
         </div>
     </div>
     </div>`;
@@ -280,39 +286,51 @@ function addCustomAttr(displayedArray, index) {
     for (var i = 0; i < displayedArray.length; i++) {
         if (i !== index) {
             container += `
-        <div class="item col-3">
-        <div class="card">
-        <div class="card-img">
-            <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
-        </div>
-        <div class="card-body">
-            <p>${displayedArray[i].name}</p>
-            <p>${displayedArray[i].price}EGP</p>
-            <p>${displayedArray[i].category}</p>
-            <p>${displayedArray[i].description}</p>
-            <button class="btn btn-warning" onclick="setFormForUpdate(${i})">Update</button>
-            <button class="btn btn-danger" onclick="deleteProduct(${i})">Delete</button>
-        </div>
+            <div class="item col-4 ">
+            <div class="card rounded-5">
+            <div class="card-img">
+                <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
+            </div>
+            <div class="card-body">
+                <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
+                <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
+                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
+                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
+                <div class="row">
+                <div class="item col-6">
+                <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
+                </div>
+                <div class="item col-6">
+                <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" onclick="deleteProduct(${i})">Delete</button>
+                </div>
+                </div>
+            </div>
         </div>
         </div>`;
         }
         else {
             container += `
-        <div class="item col-3">
-        <div class="card">
-        <div class="card-img">
-            <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
+            <div class="item col-4 ">
+            <div class="card rounded-5">
+            <div class="card-img">
+                <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
+            </div>
+            <div class="card-body">
+                <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
+                <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
+                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
+                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
+                <div class="row">
+                <div class="item col-6">
+                <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
+                </div>
+                <div class="item col-6">
+                <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" data-updated-card="${i}" onclick="deleteProduct(${i})">Delete</button>
+                </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <p>${displayedArray[i].name}</p>
-            <p>${displayedArray[i].price}EGP</p>
-            <p>${displayedArray[i].category}</p>
-            <p>${displayedArray[i].description}</p>
-            <button class="btn btn-warning" onclick="setFormForUpdate(${i})">Update</button>
-            <button class="btn btn-danger" data-updated-card="${i}" onclick="deleteProduct(${i})">Delete</button>
-        </div>
-    </div>
-    </div>`;
+        </div>`;
         }
 
     }
