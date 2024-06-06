@@ -57,29 +57,8 @@
     --R-Secondary-font-family: 'Poppins-R';
     /* End Font Variables */
 
-    /* Start Font sizes */
-    --my-fs-button: 0.8125rem;
-    /* 13px */
-    --my-fs-sm: 0.875rem;
-    /* 14px */
-    --my-fs-md: 0.9375rem;
-    /* 15px */
-    --my-fs-lg: 1rem;
-    /* 16px */
-    --my-fs-team-icons-positions: 1.25rem;
-    /* 20px */
-    --my-fs-section-header: 2.5rem;
-    /* 40px */
-    --my-fs-numvers-icons-nums: 1.875rem;
-    /* 30px */
-    --my-fs-about-header-paragraph-icon: 1.875rem;
-    /* 30px */
-    /* End Font sizes */
 }
 
-a {
-    text-decoration: none;
-}
 
 /* ================= Start Root Classes ================= */
 
@@ -101,53 +80,7 @@ a {
 .R-secondary-font-family {
     font-family: var(--R-Secondary-font-family);
 }
-
-.letter-spacing {
-    letter-spacing: 0.125rem;
-}
-
-.line-height {
-    line-height: 0.75rem;
-}
-
 /* End Font classes */
-
-
-
-/* Start font sizes classes */
-.my-fs-button {
-    font-size: var(--my-fs-button);
-}
-
-.my-fs-sm {
-    font-size: var(--my-fs-sm);
-}
-
-.my-fs-md {
-    font-size: var(--my-fs-md);
-}
-
-.my-fs-lg {
-    font-size: var(--my-fs-lg);
-}
-
-.my-fs-team-icons-positions {
-    font-size: var(--my-fs-team-icons-positions);
-}
-
-.my-fs-section-header {
-    font-size: var(--my-fs-section-header);
-}
-
-.my-fs-numvers-icons-nums {
-    font-size: var(--my-fs-numvers-icons-nums);
-}
-
-.my-fs-about-header-paragraph-icon {
-    font-size: var(--my-fs-about-header-paragraph-icon);
-}
-
-/* End font sizes classes */
 
 
 
@@ -184,21 +117,24 @@ a {
 .section-padding {
     padding: 7rem 0;
 }
-
-
 /* ================== End General Classes ================== */
 
-.products-cards img
-{
-    height: 18rem;
-    object-fit: contain;
-}
 
+
+/* ================== Start General Styling ================== */
 body
 {
     background-color: #1D1C2A;
 }
 
+
+a {
+    text-decoration: none;
+}
+/* ================== End General Styling ================== */
+
+
+/* ================== Start products-container Styling ================== */
 .products-container
 {
     background-color: #272638;
@@ -225,12 +161,19 @@ body
     background-color: #0a184d;
     border-radius: 1rem;
 }
+/* ================== End products-container Styling ================== */
 
-/* Start Cards style */
 
+/* ============== Start Cards style ================== */
 .card
 {
     background-color: #474963;
+}
+
+.products-cards img
+{
+    height: 18rem;
+    object-fit: contain;
 }
 
 .price-text

@@ -7,14 +7,13 @@ var productImage = document.getElementById("productImage");
 var productDesc = document.getElementById("productDesc");
 var addBtn = document.getElementById("addBtn");
 var updateBtn = document.getElementById("updateBtn");
-// Table elements
+
+// Cards
 var productsCards = document.getElementById("productsCards");
 
 //Array to hold form data
 var productsContainer = [];
 var searchedProducts = [];
-
-// var searchedIndex;
 
 
 // Regex function
@@ -95,12 +94,11 @@ function removeIsValid() {
 }
 
 
-//Checking if there is products stored in the local storage or not
+//Checking if there are products stored in the local storage or not
 if (localStorage.getItem("products") != null) {
     productsContainer = JSON.parse(localStorage.getItem("products"));
     displayProducts(productsContainer);
 }
-
 
 function addNewProduct() {
 
@@ -188,15 +186,9 @@ function deleteProduct(index) {
 
 function search(term) {
     searchedProducts = [];
-    //declaring two variables, one to store string in it and the other to store a copy of an array of objects
-    var tempString;
-    var tempArr = [];
+
     for (var i = 0; i < productsContainer.length; i++) {
         if (productsContainer[i].name.toLowerCase().includes(term.toLowerCase())) {
-            //Here we make a copy of the productsContainer array because passing it directly passes it by reference not value which changes the real data
-            // tempString = JSON.stringify(productsContainer);
-            // tempArr = JSON.parse(tempString);
-
             searchedProducts.push(productsContainer[i]);
         }
     }
