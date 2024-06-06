@@ -141,23 +141,17 @@ function displayProducts(displayedArray) {
     for (var i = 0; i < displayedArray.length; i++) {
         container += `
         <div class="item col-4 ">
-        <div class="card rounded-5">
+        <div class="card overflow-hidden position-relative rounded-5">
         <div class="card-img">
             <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
         </div>
-        <div class="card-body">
+        <div class="card-body pt-0">
             <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
             <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
             <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
             <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
-            <div class="row">
-            <div class="item col-6">
-            <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
-            </div>
-            <div class="item col-6">
-            <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" onclick="deleteProduct(${i})">Delete</button>
-            </div>
-            </div>
+            <button class="position-absolute top-0 end-0 me-5 bg-transparent border-0 text-warning update" onclick="setFormForUpdate(${i})"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="position-absolute top-0 end-0 me-3 bg-transparent border-0 text-danger delete" onclick="deleteProduct(${i})"><i class="fa-regular fa-trash-can"></i></button>
         </div>
     </div>
     </div>`;
@@ -287,50 +281,38 @@ function addCustomAttr(displayedArray, index) {
         if (i !== index) {
             container += `
             <div class="item col-4 ">
-            <div class="card rounded-5">
-            <div class="card-img">
-                <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
-            </div>
-            <div class="card-body">
-                <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
-                <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
-                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
-                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
-                <div class="row">
-                <div class="item col-6">
-                <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
-                </div>
-                <div class="item col-6">
-                <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" onclick="deleteProduct(${i})">Delete</button>
-                </div>
-                </div>
-            </div>
+        <div class="card overflow-hidden position-relative rounded-5">
+        <div class="card-img">
+            <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
         </div>
-        </div>`;
+        <div class="card-body pt-0">
+            <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
+            <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
+            <button class="position-absolute top-0 end-0 me-5 bg-transparent border-0 text-warning update" onclick="setFormForUpdate(${i})"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="position-absolute top-0 end-0 me-3 bg-transparent border-0 text-danger delete" onclick="deleteProduct(${i})"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+    </div>
+    </div>`;
         }
         else {
             container += `
             <div class="item col-4 ">
-            <div class="card rounded-5">
-            <div class="card-img">
-                <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
-            </div>
-            <div class="card-body">
-                <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
-                <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
-                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
-                <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
-                <div class="row">
-                <div class="item col-6">
-                <button class="btn w-100  R-secondary-font-family text-uppercase update" onclick="setFormForUpdate(${i})">Update</button>
-                </div>
-                <div class="item col-6">
-                <button class="btn btn-danger w-100  R-secondary-font-family text-uppercase delete" data-updated-card="${i}" onclick="deleteProduct(${i})">Delete</button>
-                </div>
-                </div>
-            </div>
+        <div class="card overflow-hidden position-relative rounded-5">
+        <div class="card-img">
+            <img src="${displayedArray[i].image}" class="img-fluid"  alt="">
         </div>
-        </div>`;
+        <div class="card-body pt-0">
+            <p class = "B-secondary-font-family mb-0 text-light">${displayedArray[i].name}</p>
+            <p class = "R-secondary-font-family price-text">${displayedArray[i].price} EGP</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].category}</p>
+            <p class = "R-secondary-font-family secondary-text">${displayedArray[i].description}</p>
+            <button class="position-absolute top-0 end-0 me-5 bg-transparent border-0 text-warning update" onclick="setFormForUpdate(${i})"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="position-absolute top-0 end-0 me-3 bg-transparent border-0 text-danger delete" data-updated-card="${i}" onclick="deleteProduct(${i})"><i class="fa-regular fa-trash-can"></i></button>
+        </div>
+    </div>
+    </div>`;
         }
 
     }
