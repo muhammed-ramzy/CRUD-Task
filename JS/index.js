@@ -100,6 +100,11 @@ if (localStorage.getItem("products") != null) {
     displayProducts(productsContainer);
 }
 
+function setLocalStorage()
+{
+    localStorage.setItem("products", JSON.stringify(productsContainer));
+}
+
 function addNewProduct() {
 
     if (validateInput(productName) && validateInput(productPrice) && validateInput(productCategory) && validateInput(productDesc) && validateInput(productImage)) {
@@ -114,7 +119,7 @@ function addNewProduct() {
         };
 
         productsContainer.push(product);
-        localStorage.setItem("products", JSON.stringify(productsContainer));
+        setLocalStorage()
         // console.log(productsContainer);
 
         deleteFormData();
@@ -180,7 +185,7 @@ function deleteProduct(index) {
     }
 
     productsContainer.splice(index, 1);
-    localStorage.setItem("products", JSON.stringify(productsContainer));
+    setLocalStorage()
     displayProducts(productsContainer);
 }
 
@@ -256,7 +261,7 @@ function updateProduct() {
         productsContainer[updatedCardIndex].image = `images/${productImage.files[0].name}`;
 
         displayProducts(productsContainer);
-        localStorage.setItem("products", JSON.stringify(productsContainer));
+        setLocalStorage()
 
         updateBtn.classList.replace("d-block", "d-none");
         addBtn.classList.replace("d-none", "d-block");
